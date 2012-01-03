@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block page_title %}User Page - {{ user.nickname }}{% endblock %}
+{% block title %}{{ user.nickname }}{% endblock %}
+
+{% block content %}
+<strong>{{ user.nickname }}</strong> <br/>
+
+{% for message in user.user_messages %}
+	{{ message.content }} : 	{{ message.read }}</br>
+{% endfor %}
+<strong>Add Message:</strong><br />
+<form action="/user/{{ user.key.id }}" method="post">
+Message:<br/><input type="text" name="content" />
+		<input type="submit" value="Add" />
+</form>
+{% endblock %}
+
+

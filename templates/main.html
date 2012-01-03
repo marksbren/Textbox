@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block page_title %}Textmob{% endblock %}
+{% block page_head %}<META NAME="description" CONTENT="Textbox - Text inbox">{% endblock %}
+{% block header %}{% endblock %}
+{% block title %}{% endblock %}
+
+
+{% block navigation %}
+{{ loginout_link }}
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+<h1 style="margin-top:2px; margin-bottom:10px;">Add User</h1>
+
+<form action="/" method="post">
+	
+		Name:<br/><input type="text" name="name" /><br/><br/><br/><br/>
+		Number:<br/><input type="text" name="number" /><br/><br/>
+		<input type="submit" value="Add User" />
+
+</form>
+
+<h1 style="margin-top:2px; margin-bottom:10px;">Current Users</h1>
+{% for user in users %}
+<a href= "/user/{{ user.key.id }}">{{ user.nickname }}</a>: {{ user.number }}
+{{ user.key.id_or_name }}: {{ user.count }}
+<br>
+{% endfor %}
+
+{% endblock %}
+
+
